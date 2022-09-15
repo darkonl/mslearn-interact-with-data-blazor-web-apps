@@ -1,0 +1,25 @@
+@page "/pizzas"
+
+@* use dependency injection to add the service: *@
+@using BlazingPizza.Data
+@inject PizzaService PizzaSvc
+
+@* 
+Usually, the component and the service are in different namespace members, so you must include the @using directive. This directive works in the same way as a using statement at the top of a C# code file. The @inject directive adds the service to the current component and initiates an instance of it. In the directive, specify the name of the service class. Follow it by the name you want to use for the instance of the service in this component.
+*@
+
+<h1>Choose your pizza</h1>
+
+<p>We have all this delicious recipes:</p>
+
+@code{
+    private Data.Pizza[] todaysPizzas;
+    protected override async Task OnInitializedAsync()
+    {
+        todaysPizzas = await PizzaSvc.GetPizzaAsync();
+    }
+}
+#pragma warning restore 1998
+#nullable restore
+#line 15 "c:/Users/dperez/root/blazor/blazor_tutorial/BlazingPizza/Pages/Pizzas.razor"
+
